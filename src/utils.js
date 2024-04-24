@@ -23,6 +23,7 @@ export function throwIfMissing(obj, keys) {
  * @returns {Promise<string>}
  */
 export async function sendPushNotification(payload) {
+  try{
   admin.initializeApp({
     credential: admin.credential.cert({
       projectId: process.env.FCM_PROJECT_ID,
@@ -31,5 +32,8 @@ export async function sendPushNotification(payload) {
     }),
     databaseURL: process.env.FCM_DATABASE_URL,
   });
-  return await admin.messaging().send(payload);
+  return await admin.messaging().send(payload);}
+  catch(e){
+    console.log(`error $e `);
+  }
 }
