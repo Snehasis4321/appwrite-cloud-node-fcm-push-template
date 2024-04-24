@@ -23,6 +23,10 @@ export default async ({ req, res, log, error }) => {
         title: req.body.message.title,
         body: req.body.message.body,
       },
+       data: {
+    desc: body,
+    time: Date.now().toString(),
+  },
       token: req.deviceToken,
     });
 
