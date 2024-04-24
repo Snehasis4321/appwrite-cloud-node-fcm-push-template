@@ -30,16 +30,18 @@ export default async ({ req, res, log, error }) => {
       token: req.body.deviceToken,
     });
 
-    
-  
+      
     log(`Successfully sent message: ${response}`);
-
+    console.log("here is the request")
+  console.log(req);
+  console.log(res);
 
     return res.json({ ok: true, messageId: response });
   } catch (e) {
     error(e);
     log("there was an error");
     log(e);
-    return res.json({ ok: false, error: 'Failed to send the message' }, 500);
+    console.log(e)
+    return res.json({ ok: false, error: `failed due to ${e}`}, 500);
   }
 };
