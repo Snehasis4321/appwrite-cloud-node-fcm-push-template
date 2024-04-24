@@ -29,10 +29,11 @@ export default async ({ req, res, log, error }) => {
       },
       token: req.body.deviceToken,
     });
-
-  log(req);
+  
     log(`Successfully sent message: ${response}`);
-
+    log("here is the request")
+  log(req);
+  log(res);
 
     return res.json({ ok: true, messageId: response });
   } catch (e) {
