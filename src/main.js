@@ -20,16 +20,17 @@ export default async ({ req, res, log, error }) => {
   try {
     const response = await sendPushNotification({
       notification: {
-        title: title,
-        body: body
+        title: req.body.message.title,
+        body: req.body.message.body
       },
       data: {
-        desc: body,
+        desc: req.body.message.body,
         time: Date.now().toString(),
       },
       token: req.body.deviceToken,
     });
 
+    
   
     log(`Successfully sent message: ${response}`);
 
