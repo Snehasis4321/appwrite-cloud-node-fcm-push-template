@@ -27,7 +27,7 @@ export default async ({ req, res, log, error }) => {
         desc: body,
         time: Date.now().toString(),
       },
-      token: req.deviceToken,
+      token: req.body.deviceToken,
     });
 
   
