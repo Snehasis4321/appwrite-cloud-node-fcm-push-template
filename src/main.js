@@ -25,6 +25,10 @@ export default async ({ req, res, log, error }) => {
       },
       token: req.deviceToken,
     });
+
+    print(`titile is ${req.body.message.title}`)
+    print(`body is ${req.body.message.body}`)
+    print(`token is ${req.deviceToken}`)
     log(`Successfully sent message: ${response}`);
 
     return res.json({ ok: true, messageId: response });
