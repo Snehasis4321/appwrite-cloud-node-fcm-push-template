@@ -23,6 +23,10 @@ export function throwIfMissing(obj, keys) {
  * @returns {Promise<string>}
  */
 export async function sendPushNotification(payload) {
+  console.log(process.env.FCM_PROJECT_ID)
+  console.log(process.env.FCM_CLIENT_EMAIL)
+  console.log(process.env.FCM_PRIVATE_KEY)
+  console.log(process.env.FCM_DATABASE_URL)
   try{
   admin.initializeApp({
     credential: admin.credential.cert({
