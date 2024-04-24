@@ -1,4 +1,4 @@
-import * as admin from 'firebase-admin';
+import admin from 'firebase-admin'
 
 /**
  * Throws an error if any of the keys are missing from the object
