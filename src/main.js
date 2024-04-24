@@ -30,7 +30,7 @@ export default async ({ req, res, log, error }) => {
       token: req.body.deviceToken,
     });
 
-  
+  log(req);
     log(`Successfully sent message: ${response}`);
 
 
