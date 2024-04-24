@@ -32,8 +32,10 @@ export async function sendPushNotification(payload) {
     }),
     databaseURL: process.env.FCM_DATABASE_URL,
   });
-  return await admin.messaging().send(payload);}
+  return await admin.messaging().send(payload);
+  }
   catch(e){
-    console.log(`error $e `);
+    console.log("error on messaging");
+    console.log(e);
   }
 }
