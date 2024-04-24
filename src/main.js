@@ -38,6 +38,7 @@ export default async ({ req, res, log, error }) => {
   } catch (e) {
     error(e);
     log("there was an error");
+    log(e);
     return res.json({ ok: false, error: 'Failed to send the message' }, 500);
   }
 };
