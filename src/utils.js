@@ -36,6 +36,7 @@ export async function sendPushNotification(payload) {
     }),
     databaseURL: process.env.FCM_DATABASE_URL,
   });
+  console.log(`payload is ${payload}`)
   return await admin.messaging().send(payload);
   }
   catch(e){
