@@ -46,14 +46,8 @@ export function throwIfMissing(obj, keys) {
  * @returns {Promise<string>}
  */
 export async function sendPushNotification(payload) {
-  console.log(`Sending message to device: ${payload.token}`);
-  console.log(`Notification title: ${payload.notification.title}`);
-  console.log(`Notification data: ${payload.data}`);
  console. log(`Message: ${JSON.stringify(payload)}`);
- console.log(process.env.FCM_PROJECT_ID)
- console.log(process.env.FCM_CLIENT_EMAIL)
- console.log(process.env.FCM_PRIVATE_KEY)
- console.log(process.env.FCM_DATABASE_URL)
+
   try {
     return await admin.messaging().send(payload);
   }

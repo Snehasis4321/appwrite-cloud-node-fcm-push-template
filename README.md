@@ -14,10 +14,13 @@ Send a push notification to a user.
 | ------------ | ------------------------------------ | -------- | ------------------ | -------------- |
 | Content-Type | The content type of the request body | Header   | `application/json` | N/A            |
 | deviceToken  | FCM device identifier                | Body     | String             | `642...7cd`    |
-| message      | Message to send                      | Body     | Object             | {"title": "hello","body": "how are you?"} |
-| data      | Additional data to pass                         | Body     | Object             | {"greet": true} |
+| message      | Message to send                      | Body     | Object             | `{"title": "hello","body": "how are you?"}` |
+| data      | Additional data to pass                         | Body     | Object             | `{"greet": "welcome"}` |
 
 **Request**
+
+`deviceToken` and `message` are required. `data` is optional.
+
 
 ```json
 {
@@ -26,12 +29,12 @@ Send a push notification to a user.
         "title": "hello",
         "body": "how are you?"
     },
-    //optional
     "data": {
-        "greet": true   
+        "greet": "welcome" 
     }    
 }
 ```
+
 
 **Response**
 
@@ -58,7 +61,7 @@ Sample `500` Response:
 ```json
 {
     "ok": false,
-    "error": "Failed to send the message."
+    "error": "failed due to ..."
 }
 ```
 
