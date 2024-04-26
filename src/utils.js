@@ -23,10 +23,6 @@ export function throwIfMissing(obj, keys) {
  * @returns {Promise<string>}
  */
 export async function sendPushNotification(payload) {
-  console.log(process.env.FCM_PROJECT_ID)
-  console.log(process.env.FCM_CLIENT_EMAIL)
-  console.log(process.env.FCM_PRIVATE_KEY)
-  console.log(process.env.FCM_DATABASE_URL)
   try{
   admin.initializeApp({
     credential: admin.credential.cert({
@@ -36,12 +32,9 @@ export async function sendPushNotification(payload) {
     }),
     databaseURL: process.env.FCM_DATABASE_URL,
   });
-  console.log(`payload is ${payload.notification}`)
-  console.log(`payload is ${payload.token}`)
   return await admin.messaging().send(payload);
   }
   catch(e){
-    console.log("error on messaging");
-    console.log(e);
+throw(`error on messaging ${e}`)
   }
 }
