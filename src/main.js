@@ -16,30 +16,27 @@ export default async ({ req, res, log, error }) => {
   }
 
   log(`Sending message to device: ${req.body.deviceToken}`);
-
+  log(`Message title: ${req.body.message.title}`);
+  log(`Message body: ${req.body.message.body}`);
+  log("data payload: ", req.body.data);
   try {
     const response = await sendPushNotification({
       notification: {
         title: req.body.message.title,
         body: req.body.message.body
       },
-      data: {
-        desc: req.body.message.body,
-        time: Date.now().toString(),
-      },
+      // extra options payload here
+      data: req.body.data ?? {},
       token: req.body.deviceToken,
     });
 
-    
-  
+
     log(`Successfully sent message: ${response}`);
 
 
     return res.json({ ok: true, messageId: response });
   } catch (e) {
     error(e);
-    log("there was an error");
-    log(e);
-    return res.json({ ok: false, error: 'Failed to send the message' }, 500);
+    return res.json({ ok: false, error: `failed due to ${e}` }, 500);
   }
 };

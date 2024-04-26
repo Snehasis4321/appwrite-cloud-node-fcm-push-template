@@ -14,7 +14,24 @@ Send a push notification to a user.
 | ------------ | ------------------------------------ | -------- | ------------------ | -------------- |
 | Content-Type | The content type of the request body | Header   | `application/json` | N/A            |
 | deviceToken  | FCM device identifier                | Body     | String             | `642...7cd`    |
-| message      | Message to send                      | Body     | String             | `Hello World!` |
+| message      | Message to send                      | Body     | Object             | {"title": "hello","body": "how are you?"} |
+| data      | Additional data to pass                         | Body     | Object             | {"greet": true} |
+
+**Request**
+
+```json
+{
+    "deviceToken": "642...7cd",
+    "message": {
+        "title": "hello",
+        "body": "how are you?"
+    },
+    //optional
+    "data": {
+        "greet": true   
+    }    
+}
+```
 
 **Response**
 
