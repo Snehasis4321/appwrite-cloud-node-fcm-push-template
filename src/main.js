@@ -23,25 +23,18 @@ export default async ({ req, res, log, error }) => {
         title: req.body.message.title,
         body: req.body.message.body
       },
-      data: {
-        desc: req.body.message.body,
-        time: Date.now().toString(),
-      },
+      // extra options payload here
+      data: req.body.data ?? {},
       token: req.body.deviceToken,
     });
 
-      
+
     log(`Successfully sent message: ${response}`);
-    console.log("here is the request")
-  console.log(req);
-  console.log(res);
+
 
     return res.json({ ok: true, messageId: response });
   } catch (e) {
     error(e);
-    log("there was an error");
-    log(e);
-    console.log(e)
-    return res.json({ ok: false, error: `failed due to ${e}`}, 500);
+    return res.json({ ok: false, error: `failed due to ${e}` }, 500);
   }
 };
