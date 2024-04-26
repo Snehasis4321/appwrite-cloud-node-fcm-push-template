@@ -1,5 +1,14 @@
 import admin from 'firebase-admin'
 
+
+try{
+  throwIfMissing(process.env, [
+    'FCM_PROJECT_ID',
+    'FCM_PRIVATE_KEY',
+    'FCM_CLIENT_EMAIL',
+    'FCM_DATABASE_URL',
+  ]);
+
 // initailze firebase app
 admin.initializeApp({
   credential: admin.credential.cert({
@@ -8,7 +17,11 @@ admin.initializeApp({
     privateKey: process.env.FCM_PRIVATE_KEY,
   }),
   databaseURL: process.env.FCM_DATABASE_URL,
-});
+});}
+catch(e){
+  console.log(e)
+  throw(e)
+}
 
 /**
  * Throws an error if any of the keys are missing from the object

@@ -1,13 +1,6 @@
 import { throwIfMissing, sendPushNotification } from './utils.js';
 
 export default async ({ req, res, log, error }) => {
-  throwIfMissing(process.env, [
-    'FCM_PROJECT_ID',
-    'FCM_PRIVATE_KEY',
-    'FCM_CLIENT_EMAIL',
-    'FCM_DATABASE_URL',
-  ]);
-
   try {
     throwIfMissing(req.body, ['deviceToken', 'message']);
     throwIfMissing(req.body.message, ['title', 'body']);
