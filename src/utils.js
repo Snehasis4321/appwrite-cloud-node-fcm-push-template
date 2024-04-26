@@ -19,8 +19,7 @@ admin.initializeApp({
   databaseURL: process.env.FCM_DATABASE_URL,
 });}
 catch(e){
-  console.log(e)
-  throw(e)
+  error(`firebase app initailization error ${e}`)
 }
 
 /**
