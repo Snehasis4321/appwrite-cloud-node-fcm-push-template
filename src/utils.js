@@ -55,3 +55,12 @@ export async function sendPushNotification(payload) {
     throw (`error on messaging ${e}`)
   }
 }
+
+export async function sendNotificationToMany(payload) {
+  try {
+    return await admin.messaging().sendEachForMulticast(payload);
+  }
+  catch (e) {
+    throw (`error on messaging ${e}`)
+  }
+}
