@@ -64,6 +64,86 @@ Sample `500` Response:
     "error": "failed due to ..."
 }
 ```
+### POST /many
+
+Send a push notification to a user.
+
+**Parameters**
+
+| Name         | Description                          | Location | Type               | Sample Value   |
+| ------------ | ------------------------------------ | -------- | ------------------ | -------------- |
+| Content-Type | The content type of the request body | Header   | `application/json` | N/A            |
+| deviceToken  | FCM device identifier                | Body     | Array:String             | [`642...7cd`]    |
+| message      | Message to send                      | Body     | Object             | `{"title": "hello","body": "how are you?"}` |
+| data      | Additional data to pass                         | Body     | Object             | `{"greet": "welcome"}` |
+
+**Request**
+
+`deviceToken` and `message` are required. `data` is optional.
+`device Token` is a List/Array of String.
+
+
+```json
+{
+    "deviceToken": ["642...7cd","661...7sd","669...7ld",],
+    "message": {
+        "title": "greetings",
+        "body": "Tom send greetings"
+    },
+    "data": {
+        "greet": "welcome" 
+    }    
+}
+```
+
+
+
+
+
+**Response**
+
+Sample `200` Response:
+
+
+```json
+{
+  "ok": true,
+  "messageId": {
+    "responses": [
+      {
+        "success": true,
+        "messageId": "projects/...dd8db7a2dd8db7"
+      },
+      {
+        "success": true,
+        "messageId": "projects/...dd8db7a2dd8db7"
+      },
+   
+    ],
+    "successCount": 2,
+    "failureCount": 0
+  }
+}
+```
+
+
+Sample `400` Response:
+
+```json
+{
+    "ok": false,
+    "error": "Device token and message are required."
+}
+```
+
+Sample `500` Response:
+
+```json
+{
+    "ok": false,
+    "error": "failed due to ..."
+}
+```
 
 ## ⚙️ Configuration
 
