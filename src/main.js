@@ -26,7 +26,8 @@ export default async ({ req, res, log, error }) => {
       
       return res.json({ ok: true, messageId: response });
     }
-    if(req.path=="/group"){
+    if(req.path=="/many"){
+      // here the device token should be [] of device tokens.
       const response = await sendNotificationToMany({
         notification: {
           title: req.body.message.title,
@@ -34,7 +35,7 @@ export default async ({ req, res, log, error }) => {
         },
         // extra options payload here
         data: req.body.data ?? {},
-        token: req.body.deviceToken,
+        tokens: req.body.deviceToken,
       });
       
       
