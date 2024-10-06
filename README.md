@@ -6,7 +6,7 @@ Send push notifications to your users using Firebase Cloud Messaging (FCM).
 
 ### POST /
 
-Send a push notification to a user.
+Use this endpoint to send notification to a single user, by providing a single device token of specific user.
 
 **Parameters**
 
@@ -66,7 +66,7 @@ Sample `500` Response:
 ```
 ### POST /many
 
-Send a push notification to a user.
+Use this endpoint to send notifications to multiple users at once, by providing the list of device tokens.
 
 **Parameters**
 
@@ -85,7 +85,7 @@ Send a push notification to a user.
 
 ```json
 {
-    "deviceToken": ["642...7cd","661...7sd","669...7ld",],
+    "deviceToken": ["642...7cd","661...7sd","669...7ld","612...d9f"],
     "message": {
         "title": "greetings",
         "body": "Tom send greetings"
